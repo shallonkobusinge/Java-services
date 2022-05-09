@@ -1,5 +1,7 @@
 package com.example.soapservices.general.domain;
 
+import com.example.soapservices.general.dto.SaveStudentDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,13 +12,26 @@ public class Student {
     @GeneratedValue
     private Long id;
     private String name;
+    private Integer age;
 
     public Student() {
+    }
+    public Student(SaveStudentDTO dto){
+        this.age =dto.getAge();
+        this.name = dto.getName();
     }
 
     public Student(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Long getId() {
